@@ -2,20 +2,20 @@ public class Process {
 
 
     private final int ID;
+    static private  PriorityQueue priorityQueue;
 
     public synchronized boolean insertIntoQueue(int value){
-
-        return false;
+        return priorityQueue.insert(ID, value);
     }
 
     public synchronized boolean deleteFromQueue(){
-
-        return false;
+        return priorityQueue.delete(ID);
     }
 
 
-    public Process(int ID){
+    public Process(int ID, PriorityQueue queue){
         this.ID = ID;
+        this.priorityQueue = queue;
     }
 
 }
