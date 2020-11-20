@@ -1,4 +1,4 @@
-public class Process {
+public class Process extends Thread {
 
 
     private final int ID;

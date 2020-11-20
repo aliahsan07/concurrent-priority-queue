@@ -15,16 +15,16 @@ public class PriorityQueue {
     }
 
     public boolean insert(int processID, int value){
+        System.out.println("Inserting " + value + " for process " + processID);
         LocalDateTime now = LocalDateTime.now();
         int timeStamp = ((now.getDayOfMonth() - 1) * 24 + now.getHour()) * 60 + now.getMinute();
-        timeStamp = timeStamp << 16;
-        int valueWithTimestamp = timeStamp ^ value;
-
+        int valueWithTimestamp = timeStamp ^ (value << 16);
         return tree.insertIntoTree(processID, valueWithTimestamp);
 
     }
 
     public boolean delete(int processID){
+        System.out.println("Removing value for process " + processID);
         return tree.deleteFromTree(processID);
     }
 

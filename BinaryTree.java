@@ -7,8 +7,12 @@ public class BinaryTree {
     static int levels;
     static int size;
 
+
     int minValue(){
-        return (int) tree.get(0) & 0x0000ffff;
+        if (tree.get(0).equals(Integer.MAX_VALUE)){
+            return Integer.MAX_VALUE;
+        }
+        return (int) tree.get(0) >> 16;
     }
 
     public BinaryTree(int n){
@@ -100,9 +104,9 @@ public class BinaryTree {
     void printTree()
     {
         System.out.println("Array representation of Tree:");
-        for (int i = 0; i < tree.length(); ++i){
-            int value =  (int) tree.get(i) & 0x0000ffff;
-            System.out.println(value + " ");
+        for (int i = nonLeafNodes; i < tree.length(); ++i){
+            int value =  (int) tree.get(i) & 0xffff0000;
+            System.out.print(value + " ");
         }
     }
 
